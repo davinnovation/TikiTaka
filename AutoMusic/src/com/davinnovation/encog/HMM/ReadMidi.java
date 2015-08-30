@@ -7,11 +7,31 @@ import java.util.ArrayList;
 public class ReadMidi {
 	
 	private ArrayList<String> midipath;
-	
+	private int[] pre_start;
+	private int[] pre_velocity;
+	private int[] pre_transition;
 	public ArrayList<String> getMidipath() {
 		return midipath;
 	}
-
+	
+	public double[] normalize_start()
+	{
+		double[] start = new double[128];
+		return start;
+	}
+	
+	public double[][] normalize_velocity()
+	{
+		double[][] velocity = new double[128][128];
+		return velocity;
+	}
+	
+	public double[][] normalize_transition()
+	{
+		double[][] transition = new double[128][128];
+		return transition;
+	}
+	
 	public void setMidipath(ArrayList<String> midipath) {
 		this.midipath = midipath;
 	}
@@ -19,6 +39,7 @@ public class ReadMidi {
 	ReadMidi(File dir)
 	{
 		File[] midifiles = dir.listFiles();
+		midipath = new ArrayList<String>();
 		for (File midifile : midifiles)
 		{
 			 if(!midifile.isDirectory()) // IF midifile is file
